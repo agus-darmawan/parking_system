@@ -48,7 +48,7 @@ struct vehicle add(struct vehicle v, char *name,int num, int row, int col, int t
 }
 
 void clear(){
-    system("clear" || "cls");
+    printf("\e[1;1H\e[2J");
 }
 
 void search(struct vehicle v) {
@@ -196,33 +196,33 @@ void delete(struct vehicle *v) {
 
 void savedata(struct vehicle v) {
     FILE *fptr;
-    fptr = fopen("data.txt", "w");
-    fprintf(fptr, "Vehicle Name : %s \n", v.name);
-    fprintf(fptr, "Vehicle Number : %d \n", v.num);
-    fprintf(fptr, "Vehicle Row : %d \n", v.row);
-    fprintf(fptr, "Vehicle Col : %d \n", v.col);
-    fprintf(fptr, "Vehicle Type : %d \n", v.type);
-    fprintf(fptr, "Vehicle Count : %d \n", v.vc.vehicle);
-    fprintf(fptr, "Scooter Count : %d \n", v.vc.scooter);
-    fprintf(fptr, "Car Count : %d \n", v.vc.car);
-    fprintf(fptr, "Bus Count : %d \n", v.vc.bus);
-    fprintf(fptr, "Truck Count : %d \n", v.vc.truck);
+    // fptr = fopen("data.txt", "w");
+    // fprintf(fptr, "Vehicle Name : %s \n", v.name);
+    // fprintf(fptr, "Vehicle Number : %d \n", v.num);
+    // fprintf(fptr, "Vehicle Row : %d \n", v.row);
+    // fprintf(fptr, "Vehicle Col : %d \n", v.col);
+    // fprintf(fptr, "Vehicle Type : %d \n", v.type);
+    // fprintf(fptr, "Vehicle Count : %d \n", v.vc.vehicle);
+    // fprintf(fptr, "Scooter Count : %d \n", v.vc.scooter);
+    // fprintf(fptr, "Car Count : %d \n", v.vc.car);
+    // fprintf(fptr, "Bus Count : %d \n", v.vc.bus);
+    // fprintf(fptr, "Truck Count : %d \n", v.vc.truck);
     fclose(fptr);
 }
 
 void loaddata(struct vehicle v) {
     FILE *fptr;
-    fptr = fopen("data.txt", "r");
-    fscanf(fptr, "Vehicle Name : %s \n", v.name);
-    fscanf(fptr, "Vehicle Number : %d \n", v.num);
-    fscanf(fptr, "Vehicle Row : %d \n", v.row);
-    fscanf(fptr, "Vehicle Col : %d \n", v.col);
-    fscanf(fptr, "Vehicle Type : %d \n", v.type);
-    fscanf(fptr, "Vehicle Count : %d \n", v.vc.vehicle);
-    fscanf(fptr, "Scooter Count : %d \n", v.vc.scooter);
-    fscanf(fptr, "Car Count : %d \n", v.vc.car);
-    fscanf(fptr, "Bus Count : %d \n", v.vc.bus);
-    fscanf(fptr, "Truck Count : %d \n", v.vc.truck);
+    // fptr = fopen("data.txt", "r");
+    // fscanf(fptr, "Vehicle Name : %s \n", v.name);
+    // fscanf(fptr, "Vehicle Number : %d \n", v.num);
+    // fscanf(fptr, "Vehicle Row : %d \n", v.row);
+    // fscanf(fptr, "Vehicle Col : %d \n", v.col);
+    // fscanf(fptr, "Vehicle Type : %d \n", v.type);
+    // fscanf(fptr, "Vehicle Count : %d \n", v.vc.vehicle);
+    // fscanf(fptr, "Scooter Count : %d \n", v.vc.scooter);
+    // fscanf(fptr, "Car Count : %d \n", v.vc.car);
+    // fscanf(fptr, "Bus Count : %d \n", v.vc.bus);
+    // fscanf(fptr, "Truck Count : %d \n", v.vc.truck);
     fclose(fptr);
 }
 
@@ -230,6 +230,7 @@ int main() {
     struct vehicle v;
     v.vc.bus = 0; v.vc.car = 0; v.vc.scooter = 0; v.vc.truck =0; v.vc.vehicle =0;
     while (1) {
+        getchar();
         clear();
         printf("Parking System ITTS\n");
         printf("Menu : \n");
@@ -245,6 +246,7 @@ int main() {
         scanf("%d", &menu);
         switch (menu) {
             case 1:
+                clear();
                 printf("Add Vehicle \n");
                 printf("Vehicle Name : ");
                 char name[100];
@@ -279,6 +281,7 @@ int main() {
                 printf("Car Count : %d \n", v.vc.car);
                 printf("Bus Count : %d \n", v.vc.bus);
                 printf("Truck Count : %d \n", v.vc.truck);
+                getchar();               
                 break;
             case 4:
                 printf("Search Vehicle \n");
@@ -297,5 +300,5 @@ int main() {
                 break;
             }
     } 
-    return 0;
+return 0;
 }
