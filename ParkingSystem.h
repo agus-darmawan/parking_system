@@ -268,8 +268,6 @@ int main() {
                 break;
             case 3:
                 printf("Show Vehicle \n");
-                // show vehicle using iomanip table
-
                 printf("Vehicle Name : %s \n", v.name);
                 printf("Vehicle Number : %d \n", v.num);
                 printf("Vehicle Row : %d \n", v.row);
