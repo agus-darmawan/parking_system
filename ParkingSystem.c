@@ -48,7 +48,7 @@ struct vehicle add(struct vehicle v, char *name,int num, int row, int col, int t
 }
 
 void clear(){
-    system("clear");
+    system("clear" || "cls");
 }
 
 void search(struct vehicle v) {
@@ -227,10 +227,11 @@ void loaddata(struct vehicle v) {
 }
 
 int main() {
+    struct vehicle v;
+    v.vc.bus = 0; v.vc.car = 0; v.vc.scooter = 0; v.vc.truck =0; v.vc.vehicle =0;
     while (1) {
         clear();
         printf("Parking System ITTS\n");
-        struct vehicle v;
         printf("Menu : \n");
         printf("1. Add Vehicle \n");
         printf("2. Delete Vehicle \n");
