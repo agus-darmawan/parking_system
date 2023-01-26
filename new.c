@@ -5,6 +5,7 @@
 #define LENGTH_PARKING_LOT 10
 #define WIDTH_PARKING_LOT 100
 
+// just for remember
 enum vehicle_type {
     SCOOTER = 1,
     CAR = 2,
@@ -12,6 +13,8 @@ enum vehicle_type {
     TRUCK = 4
 } ;
 
+
+// declare struct of vehicle_count
 struct vehicle_count{
     int scooter ; 
     int car ;
@@ -20,6 +23,7 @@ struct vehicle_count{
     int vehicle ;
 } ;
 
+// declare struct of vehicle
 struct vehicle{  
     char name[20];
     int num;
@@ -29,19 +33,25 @@ struct vehicle{
     struct vehicle_count vc;
 } ;
 
+// clear screen after each menu
 void clear(){
     system("clear") || system ("cls") ||  printf("\e[1;1H\e[2J");
-
 }
 
+// main function
 int main(){
+    // inisialize struct vehicle 
     struct vehicle *v;
+    // allocate memory for struct vehicle
     v = (struct vehicle *)malloc(sizeof(struct vehicle));
+    // inisialize struct vehicle_count with 0 value
     v->vc.scooter = 0;
     v->vc.car = 0;
     v->vc.bus = 0;
     v->vc.truck = 0;
     int noOfRecords = 0;
+
+    // loop for show menu
     while (1){
         clear();
         printf("Parking System \n");
@@ -57,12 +67,14 @@ int main(){
         printf("Enter your choice : ");
         int choice;
         scanf("%d", &choice);
+        // check if parking lot is full
         if(noOfRecords > WIDTH_PARKING_LOT * LENGTH_PARKING_LOT){
             printf("Parking Lot is full");
             break;
         }
         switch (choice){
         case 1:
+            // this is for add vehicle and count vehicle
             printf("Add Vehicle \n");
             printf("Enter Vehicle Name : ");
             scanf("%s", (v+noOfRecords)->name);
@@ -94,6 +106,7 @@ int main(){
             noOfRecords++;
             break;
         case 2:
+            // this is for show vehicle by name
             printf("Show Vehicle \n");
             printf("Vehicle Name \n");
             for (int i = 0; i < noOfRecords; ++i) {
@@ -109,6 +122,7 @@ int main(){
             getchar();
             break;
         case 3:
+            // this is for remove vehicle by name
             printf("Remove Vehicle \n");
             printf("Enter Vehicle Name : ");
             char name[20];
@@ -128,6 +142,7 @@ int main(){
             }
             break;
         case 4:
+            // this is for display all parking lot 
             printf("Display Parking Lot \n");
             printf("Vehicle Name \t Vehicle Number \t Vehicle Row \t Vehicle Column \n");
             for (int i = 0; i < noOfRecords; ++i) {
@@ -140,6 +155,7 @@ int main(){
             getchar();
             break;
         case 5:
+            // this is for search vehicle by number of vehicle
             printf("Search Vehicle \n");
             printf("Enter Vehicle Number : ");
             int num_search;
@@ -156,6 +172,7 @@ int main(){
             getchar();
             break;
         case 6:
+            // this is for save data to file
             printf("Save \n");
             FILE *fp;
             fp = fopen("data.txt", "w");
@@ -172,6 +189,7 @@ int main(){
             getchar();
             break;
         case 7:
+            // this is for load data from file
             printf("Load \n");
             FILE *fp1;
             fp1 = fopen("data.txt", "r");
